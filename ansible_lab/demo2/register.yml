@@ -1,0 +1,20 @@
+#!/usr/bin/ansible-playbook
+- name: "data collection"
+  hosts: all
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  
+  vars:
+    tests: hello, this is dummy value
+    packages: ['wget','unzip','curl']
+
+  tasks:
+    - name: shell version
+      shell: "bash --version"
+      register: bash_ver
+    - set_fact:
+        bash_vers: "{{ bash_ver.stdout_lines[0].split()[3] }}"
+    - name: show register variable
+      debug:
+        var: bash_vers

@@ -1,0 +1,13 @@
+#!/usr/bin/ansible-playbook
+- name: "Intro Playbook"
+  hosts: all
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  
+  vars:
+    tests: hello, this is dummy value
+  tasks:
+    - name: DEBUG Ensure Apache is fresh
+      debug:
+        var: tests

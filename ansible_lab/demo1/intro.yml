@@ -1,0 +1,18 @@
+#!/usr/bin/ansible-playbook
+- name: "Intro Playbook"
+  hosts: all
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  
+  tasks:
+    - name: "Ping"
+      ping:
+    - name: Ensure Apacher is fresh
+      yum:
+        name: httpd
+        state: latest
+    - name: Service is running check
+      service:
+        name: httpd
+        state: started

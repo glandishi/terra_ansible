@@ -1,0 +1,26 @@
+#!/usr/bin/ansible-playbook
+- name: "Intro Playbook"
+  hosts: all
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  
+  tasks:
+    - name: DEBUG Ensure Apache is fresh
+      debug:
+        msg: 
+          - "Custom message from debug" 
+          - "Next line"
+    - name: print variable
+      debug:
+        msg: 
+          - "host ip = {{inventory_hostname}}"
+          - host ip is {{inventory_hostname}}
+          - gw is {{ ansible_default_ipv4.gateway}}
+    - name: variable task
+      debug:
+        var: inventory_hostname
+    - name: verbosity
+      debug:
+        msg: ansible versbosity is {{ ansible_verbosity}} 
+        verbosity: 2

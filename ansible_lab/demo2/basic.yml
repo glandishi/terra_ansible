@@ -1,0 +1,17 @@
+#!/usr/bin/ansible-playbook
+- name: "data collection"
+  hosts: all
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  
+  vars:
+    tests: hello, this is dummy value
+    packages: ['wget','unzip','curl']
+  tasks:
+    - name: DEBUG 
+      debug:
+        var: tests
+    - name: sequence
+      debug:
+        var: packages

@@ -1,0 +1,12 @@
+plugin: gcp_compute
+projects:
+  - k8s-gcp-370918
+auth_kind: serviceaccount
+service_account_file: ~/ansible/ansible_automation/lab/gcp/gcp.json
+keyed_groups:
+  - key: labels
+    prefix: label
+  - key: zone
+    prefix: zone
+filters:
+    status = RUNNING
